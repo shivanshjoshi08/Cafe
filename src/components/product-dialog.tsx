@@ -26,7 +26,8 @@ export function ProductDialog({ item, onClose, onAdded }: { item: MenuItem; onCl
   }
 
   return <Modal open onOpenChange={(open) => { if (!open) onClose(); }} title={item.name} description={item.sourceUrl ? "Reference-inspired choice · estimated demo price" : "Made your way. Enjoyed at your pace."}>
-    <div className="product-modal-image"><Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 600px) 100vw, 500px" />{item.imageIsRepresentative && <span className="representative-photo">Illustrative photo · not the restaurant’s dish</span>}</div>
+    <div className="product-modal-image"><Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 600px) 100vw, 500px" /></div>
+    {item.imageIsRepresentative && <p className="product-photo-note">Illustrative photo · not the restaurant’s dish</p>}
     <p className="product-description">{item.description}</p>
     {item.sourceUrl && <div className="product-source-note"><p>Dish name adapted from the reference menu. Recipe, price, portion, and availability are not verified.</p><a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">View the official menu category <ArrowUpRight size={12} /></a></div>}
     {item.customizable && <>
